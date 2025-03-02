@@ -4,21 +4,27 @@ import {
   TouchableOpacity,
   Dimensions,
   Platform,
+  TouchableWithoutFeedback,
 } from "react-native";
 import { Items } from "./TrendingCarousel";
 import Carousel from "react-native-reanimated-carousel";
 import MovieCard from "./MovieCard";
+import { useRouter } from "expo-router";
 const MovieList = ({ title, data }: { title: string; data: Items[] }) => {
   const { width, height } = Dimensions.get("window");
   const ios = Platform.OS === "ios";
   const parallaxScrollingOffset = ios ? 200 : 185;
+  const router = useRouter();
 
   return (
     <View>
       <View className="flex flex-row px-7 justify-between items-center my-5">
         <Text className=" font-lexendSemi text-white text-lg ">{title}</Text>
 
-        <TouchableOpacity className="border border-secondary rounded-lg px-5 py-3">
+        <TouchableOpacity
+          onPress={() => router.push(`/Movie/19`)}
+          className="border border-secondary rounded-lg px-5 py-3"
+        >
           <Text className="text-secondary font-lexendRegular">See all</Text>
         </TouchableOpacity>
       </View>
@@ -27,20 +33,22 @@ const MovieList = ({ title, data }: { title: string; data: Items[] }) => {
           width={width}
           height={height * 0.39}
           data={data}
-          mode="parallax"
+          // mode="parallax"
           renderItem={({ item }) => (
-            <MovieCard
-              trending={false}
-              item={item}
-              width={width}
-              height={height}
-            />
+           <TouchableWithoutFeedback onPress={() => router.push(`/Movie/${item.id}`)}>
+               <MovieCard
+                trending={false}
+                item={item}
+                width={width}
+                height={height}
+              />
+           </TouchableWithoutFeedback>
           )}
-          modeConfig={{
-            parallaxAdjacentItemScale: 1,
-            parallaxScrollingOffset: parallaxScrollingOffset,
-            parallaxScrollingScale: 1,
-          }}
+          // modeConfig={{
+          //   parallaxAdjacentItemScale: 1,
+          //   parallaxScrollingOffset: parallaxScrollingOffset,
+          //   parallaxScrollingScale: 1,
+          // }}
           // style={{backgroundColor:"pink"}}
         />
       </View>

@@ -1,6 +1,7 @@
 import { Image, View, Text, TouchableWithoutFeedback } from "react-native";
 import { Items } from "./TrendingCarousel";
 import { FontAwesome } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
 
 export const transformTime = (min: number | string) => {
   const minutes = +min; // Convert to number
@@ -9,6 +10,7 @@ export const transformTime = (min: number | string) => {
 
   return { heure, minute };
 };
+
 
 export const sliceChara = (str: string, status: string) => {
   const maxLength = status === "title" ? 20 : 27;
@@ -29,16 +31,13 @@ const MovieCard = ({
   const { heure, minute } = transformTime("196");
 
   return trending ? (
-    <TouchableWithoutFeedback>
       <Image
         className="h-full rounded-xl"
         style={{ width: width }}
         source={{ uri: item.image }}
         resizeMode="cover"
       />
-    </TouchableWithoutFeedback>
   ) : (
-    <TouchableWithoutFeedback>
       <View className="ml-3">
         <Image
           className="h-full rounded-xl"
@@ -72,7 +71,6 @@ const MovieCard = ({
           </Text>
         </View>
       </View>
-    </TouchableWithoutFeedback>
   );
 };
 
