@@ -7,6 +7,7 @@ import {
   Dimensions,
   ScrollView,
   Platform,
+  Pressable,
 } from "react-native";
 import Carousel from "react-native-reanimated-carousel";
 import MovieCard from "./MovieCard";
@@ -45,7 +46,7 @@ let parallaxScrollingOffset = ios ? 165 : 150;
 const TrendingCarousel = () => {
   const router = useRouter();
   return (
-    <View>
+    <ScrollView nestedScrollEnabled>
       <Text className="px-7 font-lexendSemi text-white text-lg mb-5">
         TRENDING
       </Text>
@@ -57,17 +58,14 @@ const TrendingCarousel = () => {
           data={fruitItems}
           renderItem={({ item }) => (
             <View className="flex justify-center items-center">
-              <TouchableWithoutFeedback
-                onPress={() => router.push(`/Movie/${item.id}`)}
-              >
+              <Pressable onPress={() => router.push(`/Movie/${item.id}`)}>
                 <MovieCard
-            
                   height={height}
                   trending={true}
                   width={width * 0.62}
                   item={item}
                 />
-              </TouchableWithoutFeedback>
+              </Pressable>
             </View>
           )}
           style={{
@@ -81,7 +79,7 @@ const TrendingCarousel = () => {
           }}
         />
       </View>
-    </View>
+    </ScrollView>
   );
 };
 

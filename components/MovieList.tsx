@@ -5,6 +5,7 @@ import {
   Dimensions,
   Platform,
   TouchableWithoutFeedback,
+  Pressable,
 } from "react-native";
 import { Items } from "./TrendingCarousel";
 import Carousel from "react-native-reanimated-carousel";
@@ -35,14 +36,14 @@ const MovieList = ({ title, data }: { title: string; data: Items[] }) => {
           data={data}
           // mode="parallax"
           renderItem={({ item }) => (
-           <TouchableWithoutFeedback onPress={() => router.push(`/Movie/${item.id}`)}>
+           <Pressable onPress={() => router.push(`/Movie/${item.id}`)}>
                <MovieCard
                 trending={false}
                 item={item}
                 width={width}
                 height={height}
               />
-           </TouchableWithoutFeedback>
+           </Pressable>
           )}
           // modeConfig={{
           //   parallaxAdjacentItemScale: 1,
