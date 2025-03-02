@@ -1,11 +1,11 @@
 import { useLocalSearchParams } from "expo-router";
 import { View, Text } from "react-native";
-const Movie = () => {
-
+const MovieScreen = () => {
+  const { id } = useLocalSearchParams();
   return (
     <View>
-      <Text>Hello</Text>
+      <Text>{id} Movie!!!</Text>
     </View>
   );
 };
-export default Movie;
+export default MovieScreen;

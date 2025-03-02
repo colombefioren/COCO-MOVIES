@@ -43,6 +43,7 @@ let ios = Platform.OS == "ios";
 let parallaxScrollingOffset = ios ? 165 : 150;
 
 const TrendingCarousel = () => {
+  const router = useRouter();
   return (
     <View>
       <Text className="px-7 font-lexendSemi text-white text-lg mb-5">
@@ -56,8 +57,11 @@ const TrendingCarousel = () => {
           data={fruitItems}
           renderItem={({ item }) => (
             <View className="flex justify-center items-center">
-              <TouchableWithoutFeedback>
+              <TouchableWithoutFeedback
+                onPress={() => router.push(`/Movie/${item.id}`)}
+              >
                 <MovieCard
+            
                   height={height}
                   trending={true}
                   width={width * 0.62}

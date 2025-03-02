@@ -18,12 +18,12 @@ export default function RootLayout() {
       <StatusBar backgroundColor="#1B2431" style="light" />
       <Stack
         screenOptions={{
-          headerShown: false,
+          headerShown: true,
           contentStyle: { backgroundColor: "#1B2431" },
         }}
       >
         <Stack.Screen name="index" options={{ title: "Home" }} />
-        <Stack.Screen name="Movie/[item]/Movie"/>
+        <Stack.Screen name="Movie/[id]"/>
       </Stack>
     </SafeAreaView>
   );

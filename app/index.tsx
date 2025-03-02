@@ -7,7 +7,6 @@ import {
   ScrollView,
   SafeAreaView,
 } from "react-native";
-// import FontAwesome6 from "@react-native-vector-icons/fontawesome6";
 import { FontAwesome } from "@expo/vector-icons";
 import { useState } from "react";
 import TrendingCarousel, { fruitItems } from "@/components/TrendingCarousel";
