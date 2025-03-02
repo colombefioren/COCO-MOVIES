@@ -1,50 +1,42 @@
-# Welcome to your Expo app 👋
+# 🎬 COCO MOVIES 📽️  
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+COCO MOVIES is a **React Native** application that allows users to browse and discover movies using a powerful **Movie API**. The app provides a seamless experience on both **iOS and Android**, with an intuitive interface and smooth performance.  
 
-## Get started
+## ✨ Features  
+✅ **Browse Movies** 
+✅ **Search Functionality** 
+✅ **Movie Details**
+✅ **Responsive UI** 
+✅ **Smooth Navigation**
 
-1. Install dependencies
 
+## 📸 Screenshots  
+_Add screenshots or a demo GIF here to showcase the app._  
+
+## 🔧 Setup & Installation  
+1️⃣ Clone the repository:  
+   ```bash
+   git clone https://github.com/colombefioren/COCO-MOVIES.git
+   ```  
+2️⃣ Navigate to the project folder:  
+   ```bash
+   cd COCO-MOVIES
+   ```  
+3️⃣ Install dependencies:  
    ```bash
    npm install
-   ```
+   ```  
+4️⃣ Run the app:  
+   - On Android:  
+     ```bash
+     npm run android
+     ```  
+   - On iOS:  
+     ```bash
+     npm run ios
+     ```  
 
-2. Start the app
-
-   ```bash
-    npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## 🛠️ Future Enhancements  
+🔹 Add user authentication for personalized watchlists.  
+🔹 Implement dark mode for better user experience.  
+🔹 Add favorite movies and watch history.  
