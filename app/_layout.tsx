@@ -16,7 +16,7 @@ export default function RootLayout() {
   if (!fontsLoaded) return <Text>Loading fonts...</Text>;
   return (
     <SafeAreaView style={ios ? {} : {paddingTop : 30}} className="flex-1 bg-primary">
-      <StatusBar backgroundColor="#1B2431" style="light" />
+      <StatusBar backgroundColor="#1B2431" style="light"/>
       <Stack
         screenOptions={{
           headerShown: false,
