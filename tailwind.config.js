@@ -18,8 +18,9 @@ module.exports = {
         primary: "#1B2431",
         primaryLight: "rgba(225, 229, 235, 0.07)",
         secondary: "#0688F3",
+        secondaryTrans: "#0688F333",
         tertiary: "#EF9730",
-      },
+      }
     },
   },
   plugins: [],
