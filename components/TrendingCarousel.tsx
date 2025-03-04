@@ -50,6 +50,8 @@ let ios = Platform.OS == "ios";
 let parallaxScrollingOffset = ios ? 165 : 150;
 
 const TrendingCarousel = () => {
+  // const length = fruitItems[0].title.length;
+  // console.log(length);
   const router = useRouter();
   return (
     <ScrollView nestedScrollEnabled>

@@ -1,10 +1,11 @@
 import { Stack } from "expo-router";
 import "../global.css";
 import { useFonts } from "expo-font";
-import { SafeAreaView, Text, View } from "react-native";
+import { Platform, SafeAreaView, Text, View } from "react-native";
 import { StatusBar } from "expo-status-bar";
 
 export default function RootLayout() {
+  const ios = Platform.OS === "ios";
   const [fontsLoaded] = useFonts({
     lexend: require("../assets/fonts/Lexend-ExtraLight.ttf"),
     lexendRegular: require("../assets/fonts/Lexend-Light.ttf"),
@@ -14,16 +15,16 @@ export default function RootLayout() {
 
   if (!fontsLoaded) return <Text>Loading fonts...</Text>;
   return (
-    <SafeAreaView className="flex-1 bg-primary">
+    <SafeAreaView style={ios ? {} : {paddingTop : 30}} className="flex-1 bg-primary">
       <StatusBar backgroundColor="#1B2431" style="light" />
       <Stack
         screenOptions={{
-          headerShown: true,
+          headerShown: false,
           contentStyle: { backgroundColor: "#1B2431" },
         }}
       >
         <Stack.Screen name="index" options={{ title: "Home" }} />
-        <Stack.Screen name="Movie/[id]"/>
+        <Stack.Screen name="Movie/[id]" />
       </Stack>
     </SafeAreaView>
   );
