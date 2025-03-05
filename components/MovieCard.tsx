@@ -4,7 +4,7 @@ import { FontAwesome } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 
 export const transformTime = (min: number | string) => {
-  const minutes = +min; // Convert to number
+  const minutes = +min;
   const heure = Math.floor(minutes / 60);
   const minute = minutes % 60;
 
