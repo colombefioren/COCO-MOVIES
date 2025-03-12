@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   ScrollView,
   SafeAreaView,
+  Platform,
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import { useState } from "react";
@@ -13,11 +14,12 @@ import TrendingCarousel, { fruitItems } from "@/components/TrendingCarousel";
 import MovieList from "@/components/MovieList";
 
 const { width } = Dimensions.get("window");
+const ios = Platform.OS == "ios";
 
 const index = () => {
   const [searchInput, setSearchInput] = useState("");
   return (
-    <ScrollView>
+    <ScrollView style={ios ? {} : {paddingTop : 30}}>
       <View className="flex flex-row items-center justify-between px-7">
         <Text className="text-white font-lexendBold text-3xl">
           Coco<Text className="text-secondary">.</Text> Mov

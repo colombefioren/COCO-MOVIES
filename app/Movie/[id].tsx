@@ -6,7 +6,7 @@ import {
   ImageBackground,
   Dimensions,
   StyleSheet,
-  Pressable,
+  ScrollView,
   TouchableOpacity,
   Platform,
 } from "react-native";
@@ -15,6 +15,8 @@ import { FontAwesome } from "@expo/vector-icons";
 import { StatusBar } from "expo-status-bar";
 import { transformTime } from "@/components/MovieCard";
 import { useEffect, useState } from "react";
+import Cast from "@/components/Cast";
+import MovieList from "@/components/MovieList";
 
 const MovieScreen = () => {
   const [long, setLong] = useState(false);
@@ -27,7 +29,6 @@ const MovieScreen = () => {
   const iconSize = ios ? 52 : 45;
   const { heure, minute } = transformTime("201");
   const [show, setShow] = useState(false);
-
   let description =
     "Snow White is not set typically means That’s rough. You’re basically carrying them, and they probably don’t even realize how frustrating it is for you. Maybe it’s time to start pushing back a little—like asking them what they’ve tried before giving an answer. If they haven’t even made an effort, they don’t deserve an easy solution.";
 
@@ -59,10 +60,11 @@ const MovieScreen = () => {
   };
 
   return (
-    <View>
+    <ScrollView>
+      <StatusBar style="light" />
       <ImageBackground
         source={{ uri: item.image }}
-        style={{ height: height * 0.44, backgroundColor: "red" }}
+        style={{ height: height * 0.48, backgroundColor: "red" }}
         resizeMode="cover"
       >
         <LinearGradient
@@ -84,12 +86,15 @@ const MovieScreen = () => {
             />
           </TouchableOpacity>
         </View>
-        <View className="flex flex-row justify-between px-5">
+        <View
+          className="flex flex-row justify-between px-5"
+          style={ios ? null : { marginTop: 30 }}
+        >
           <TouchableOpacity onPress={() => router.back()}>
-            <FontAwesome name="chevron-left" color={"white"} size={28} />
+            <FontAwesome name="chevron-left" color={"white"} size={25} />
           </TouchableOpacity>
           <TouchableOpacity>
-            <FontAwesome name="tv" color={"white"} size={28} />
+            <FontAwesome name="tv" color={"white"} size={25} />
           </TouchableOpacity>
         </View>
       </ImageBackground>
@@ -191,7 +196,9 @@ const MovieScreen = () => {
           </TouchableOpacity>
         )}
       </View>
-    </View>
+      <Cast />
+      <MovieList title="SIMILAR MOVIES" data={fruitItems} />
+    </ScrollView>
   );
 };
 
