@@ -14,29 +14,49 @@ import { LinearGradient } from "expo-linear-gradient";
 import { FontAwesome } from "@expo/vector-icons";
 import { StatusBar } from "expo-status-bar";
 import { transformTime } from "@/components/MovieCard";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const MovieScreen = () => {
-  const [more, setMore] = useState(false);
+  const [long, setLong] = useState(false);
   const { id } = useLocalSearchParams();
   const { height } = Dimensions.get("window");
   const item = fruitItems.filter((film) => film.id === +id)[0];
   const router = useRouter();
+  const [desc, setDesc] = useState("");
   const ios = Platform.OS == "ios";
   const iconSize = ios ? 52 : 45;
   const { heure, minute } = transformTime("201");
+  const [show, setShow] = useState(false);
 
-  const ViewMore = (str: string) => {
-    let desc = str;
-    if (!more && str.length > 235) {
-      return str.slice(0, 235) + "...";
+  let description =
+    "Snow White is not set typically means That’s rough. You’re basically carrying them, and they probably don’t even realize how frustrating it is for you. Maybe it’s time to start pushing back a little—like asking them what they’ve tried before giving an answer. If they haven’t even made an effort, they don’t deserve an easy solution.";
+
+  const descLength = (str: string) => {
+    if (str.length > 150) {
+      setLong(true);
+      setShow(false);
+      setDesc(str.slice(0, 150) + "...");
+    } else {
+      setLong(false);
+      setDesc(str);
     }
-    return str;
   };
 
-  const description = ViewMore(
-    `My name is not what you think it is, I've alwaysMy name is not what you think it is, I've always My name is not what you think it is, I've always My name is not what you think it is, I've always My name is not what you think it is, I've always`
-  );
+  useEffect(() => {
+    descLength(description);
+  }, []);
+
+  const handleMoreClick = () => {
+    setDesc(description);
+    setLong(false);
+    setShow(true);
+  };
+
+  const handleShowClick = () => {
+    setDesc(description.slice(0, 150) + "...");
+    setLong(true);
+    setShow(false);
+  };
 
   return (
     <View>
@@ -142,9 +162,10 @@ const MovieScreen = () => {
           Action, Science Fiction
         </Text>
       </View>
-      <Text className="mt-5 font-lexendRegular text-justify text-white mx-5">
-        {description}
-        {more && (
+      <View className="mt-5 mx-5">
+        <Text className="font-lexend text-justify text-white relative text-[13px] leading-6">
+          {desc}
+          {/* {more && (
           <TouchableOpacity onPress={() => setMore(!more)}>
             <Text className="text-lexendRegular text-secondary">View More</Text>
           </TouchableOpacity>
@@ -153,8 +174,23 @@ const MovieScreen = () => {
           <TouchableOpacity onPress={() => setMore(!more)}>
             <Text className="text-lexendRegular text-secondary">Show Less</Text>
           </TouchableOpacity>
+        )} */}
+        </Text>
+        {long && (
+          <TouchableOpacity className="mt-1" onPress={handleMoreClick}>
+            <Text className="font-lexendRegular text-secondary text-[13px]">
+              View More
+            </Text>
+          </TouchableOpacity>
         )}
-      </Text>
+        {show && (
+          <TouchableOpacity className="mt-1" onPress={handleShowClick}>
+            <Text className="font-lexendRegular text-secondary text-[13px]">
+              Show Less
+            </Text>
+          </TouchableOpacity>
+        )}
+      </View>
     </View>
   );
 };
