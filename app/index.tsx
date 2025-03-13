@@ -20,8 +20,8 @@ const ios = Platform.OS == "ios";
 const index = () => {
   const [searchInput, setSearchInput] = useState("");
   return (
-    <ScrollView>
-            <StatusBar backgroundColor="#1B2431" style="light"/>
+    <ScrollView style={ios ? {} : { paddingTop: 30 }}>
+      <StatusBar backgroundColor="#1B2431" style="light" />
       <View className="flex flex-row items-center justify-between px-7">
         <Text className="text-white font-lexendBold text-3xl">
           Coco<Text className="text-secondary">.</Text> Mov

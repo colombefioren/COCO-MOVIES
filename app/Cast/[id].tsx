@@ -2,6 +2,7 @@ import MovieList from "@/components/MovieList";
 import { fruitItems } from "@/components/TrendingCarousel";
 import { FontAwesome } from "@expo/vector-icons";
 import { router, useLocalSearchParams } from "expo-router";
+import { StatusBar } from "expo-status-bar";
 import { useEffect, useState } from "react";
 import {
   View,
@@ -52,7 +53,8 @@ const CastScreen = () => {
 
   return (
     <ScrollView>
-      <View className="flex items-center justify-center mt-5 gap-10">
+      <StatusBar style="light" backgroundColor="#1B2431"/>
+      <View className="flex items-center justify-center gap-10" style={{marginTop : 30}}>
         <View className="flex items-center justify-center gap-5 relative w-full">
           <Image
             source={{ uri: actor.image }}
