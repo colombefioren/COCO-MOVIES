@@ -22,10 +22,7 @@ const MovieList = ({ title, data }: { title: string; data: Items[] }) => {
       <View className="flex flex-row px-7 justify-between items-center my-5">
         <Text className=" font-lexendSemi text-white text-lg ">{title}</Text>
 
-        <TouchableOpacity
-          onPress={() => router.push(`/Movie/19`)}
-          className="border border-secondary rounded-lg px-5 py-3"
-        >
+        <TouchableOpacity className="border border-secondary rounded-lg px-5 py-3">
           <Text className="text-secondary font-lexendRegular">See all</Text>
         </TouchableOpacity>
       </View>
@@ -36,14 +33,14 @@ const MovieList = ({ title, data }: { title: string; data: Items[] }) => {
           data={data}
           // mode="parallax"
           renderItem={({ item }) => (
-           <Pressable onPress={() => router.replace(`/Movie/${item.id}`)}>
-               <MovieCard
+            <Pressable onPress={() => router.replace(`/Movie/${item.id}`)}>
+              <MovieCard
                 trending={false}
                 item={item}
                 width={width}
                 height={height}
               />
-           </Pressable>
+            </Pressable>
           )}
           // modeConfig={{
           //   parallaxAdjacentItemScale: 1,
