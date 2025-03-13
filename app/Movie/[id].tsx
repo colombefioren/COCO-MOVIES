@@ -90,7 +90,7 @@ const MovieScreen = () => {
           className="flex flex-row justify-between px-5"
           style={ios ? { marginTop: 60 } : { marginTop: 30 }}
         >
-          <TouchableOpacity onPress={() => router.back()}>
+          <TouchableOpacity onPress={() => router.push("/")}>
             <FontAwesome name="chevron-left" color={"white"} size={25} />
           </TouchableOpacity>
           <TouchableOpacity>
