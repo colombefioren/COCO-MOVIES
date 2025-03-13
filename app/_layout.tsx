@@ -13,10 +13,10 @@ export default function RootLayout() {
     lexendSemi: require("../assets/fonts/Lexend-SemiBold.ttf"),
   });
 
+  // style={ios ? {} : {paddingTop : 30}}
   if (!fontsLoaded) return <Text>Loading fonts...</Text>;
   return (
-    <SafeAreaView className="flex-1 bg-primary">
-      <StatusBar backgroundColor="#1B2431" style="light"/>
+    <View className="flex-1 bg-primary" >
       <Stack
         screenOptions={{
           headerShown: false,
@@ -26,6 +26,6 @@ export default function RootLayout() {
         <Stack.Screen name="index" options={{ title: "Home" }} />
         <Stack.Screen name="Movie/[id]" />
       </Stack>
-    </SafeAreaView>
+    </View>
   );
 }
