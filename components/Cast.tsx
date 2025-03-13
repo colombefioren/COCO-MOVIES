@@ -18,7 +18,7 @@ const Cast = () => {
         width={width * 0.95}
         height={height * 0.16}
         renderItem={({ item }) => (
-          <TouchableOpacity onPress={() => router.push("/Cast/[id]")}>
+          <TouchableOpacity onPress={() => router.push(`/Cast/${item.id}`)}>
             <View
               style={{ width: 75 }}
               className="flex items-center ml-5 gap-3 "
