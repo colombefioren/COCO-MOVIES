@@ -20,7 +20,7 @@ const ios = Platform.OS == "ios";
 const index = () => {
   const [searchInput, setSearchInput] = useState("");
   return (
-    <ScrollView style={ios ? {marginTop : 50} : {paddingTop : 30}}>
+    <ScrollView>
             <StatusBar backgroundColor="#1B2431" style="light"/>
       <View className="flex flex-row items-center justify-between px-7">
         <Text className="text-white font-lexendBold text-3xl">

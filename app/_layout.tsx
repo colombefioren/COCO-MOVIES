@@ -16,7 +16,10 @@ export default function RootLayout() {
   // style={ios ? {} : {paddingTop : 30}}
   if (!fontsLoaded) return <Text>Loading fonts...</Text>;
   return (
-    <View className="flex-1 bg-primary" >
+    <View
+      className="flex-1 bg-primary"
+      style={ios ? { marginTop: 50 } : { paddingTop: 30 }}
+    >
       <Stack
         screenOptions={{
           headerShown: false,
@@ -25,6 +28,7 @@ export default function RootLayout() {
       >
         <Stack.Screen name="index" options={{ title: "Home" }} />
         <Stack.Screen name="Movie/[id]" />
+        <Stack.Screen name="Cast/[id]"/>
       </Stack>
     </View>
   );
