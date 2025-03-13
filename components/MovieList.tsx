@@ -36,7 +36,7 @@ const MovieList = ({ title, data }: { title: string; data: Items[] }) => {
           data={data}
           // mode="parallax"
           renderItem={({ item }) => (
-           <Pressable onPress={() => router.push(`/Movie/${item.id}`)}>
+           <Pressable onPress={() => router.replace(`/Movie/${item.id}`)}>
                <MovieCard
                 trending={false}
                 item={item}

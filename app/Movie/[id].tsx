@@ -61,7 +61,7 @@ const MovieScreen = () => {
 
   return (
     <ScrollView>
-      <StatusBar style="light" />
+      <StatusBar style="light" backgroundColor="transparent" />
       <ImageBackground
         source={{ uri: item.image }}
         style={{ height: height * 0.48, backgroundColor: "red" }}
@@ -73,22 +73,22 @@ const MovieScreen = () => {
           style={styles.gradient}
         />
 
-        <View
-          style={{ height: iconSize, width: iconSize }}
-          className=" absolute  top-[75%] left-[50%] translate-x-[-50%] rounded-full bg-secondaryTrans flex items-center justify-center"
-        >
-          <TouchableOpacity>
+        <TouchableOpacity className="absolute  top-[75%] left-[50%] translate-x-[-50%]">
+          <View
+            style={{ height: iconSize, width: iconSize }}
+            className="rounded-full bg-secondaryTrans flex items-center justify-center"
+          >
             <FontAwesome
               name="play"
               size={ios ? 28 : 25}
               color={"#0688F3"}
               className="ml-2"
             />
-          </TouchableOpacity>
-        </View>
+          </View>
+        </TouchableOpacity>
         <View
           className="flex flex-row justify-between px-5"
-          style={ios ? null : { marginTop: 30 }}
+          style={ios ? { marginTop: 60 } : { marginTop: 30 }}
         >
           <TouchableOpacity onPress={() => router.back()}>
             <FontAwesome name="chevron-left" color={"white"} size={25} />
@@ -104,54 +104,54 @@ const MovieScreen = () => {
         </Text>
       </View>
       <View className="flex flex-row justify-between px-16 mt-6">
-        <View
-          style={{ height: iconSize, width: iconSize }}
-          className="border border-secondary flex items-center justify-center rounded-lg"
-        >
-          <TouchableOpacity>
+        <TouchableOpacity>
+          <View
+            style={{ height: iconSize, width: iconSize }}
+            className="border border-secondary flex items-center justify-center rounded-lg"
+          >
             <FontAwesome
               name="download"
               color={"#0688F3"}
               size={ios ? 20 : 17}
             />
-          </TouchableOpacity>
-        </View>
-        <View
-          style={{ height: iconSize, width: iconSize }}
-          className="border border-secondary flex items-center justify-center rounded-lg"
-        >
-          <TouchableOpacity>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <View
+            style={{ height: iconSize, width: iconSize }}
+            className="border border-secondary flex items-center justify-center rounded-lg"
+          >
             <FontAwesome
               name="bookmark"
               color={"#0688F3"}
               size={ios ? 20 : 17}
             />
-          </TouchableOpacity>
-        </View>
-        <View
-          style={{ height: iconSize, width: iconSize }}
-          className="border border-secondary flex items-center justify-center rounded-lg"
-        >
-          <TouchableOpacity>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <View
+            style={{ height: iconSize, width: iconSize }}
+            className="border border-secondary flex items-center justify-center rounded-lg"
+          >
             <FontAwesome
               name="paper-plane"
               color={"#0688F3"}
               size={ios ? 20 : 17}
             />
-          </TouchableOpacity>
-        </View>
-        <View
-          style={{ height: iconSize, width: iconSize }}
-          className="border border-secondary flex items-center justify-center rounded-lg"
-        >
-          <TouchableOpacity>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <View
+            style={{ height: iconSize, width: iconSize }}
+            className="border border-secondary flex items-center justify-center rounded-lg"
+          >
             <FontAwesome
               name="ellipsis-h"
               color={"#0688F3"}
               size={ios ? 20 : 17}
             />
-          </TouchableOpacity>
-        </View>
+          </View>
+        </TouchableOpacity>
       </View>
       <View className="flex flex-row mt-5 gap-5 ml-5">
         <View className="flex flex-row gap-3 items-center">
@@ -168,22 +168,12 @@ const MovieScreen = () => {
         </Text>
       </View>
       <View className="mt-5 mx-5">
-        <Text className="font-lexend text-justify text-white relative text-[13px] leading-6">
+        <Text className="font-lexendRegular text-justify text-white relative text-[13px] leading-6">
           {desc}
-          {/* {more && (
-          <TouchableOpacity onPress={() => setMore(!more)}>
-            <Text className="text-lexendRegular text-secondary">View More</Text>
-          </TouchableOpacity>
-        )}
-        {!more && (
-          <TouchableOpacity onPress={() => setMore(!more)}>
-            <Text className="text-lexendRegular text-secondary">Show Less</Text>
-          </TouchableOpacity>
-        )} */}
         </Text>
         {long && (
           <TouchableOpacity className="mt-1" onPress={handleMoreClick}>
-            <Text className="font-lexendRegular text-secondary text-[13px]">
+            <Text className="font-lexendRegular text-secondary text-[13px] w-24">
               View More
             </Text>
           </TouchableOpacity>

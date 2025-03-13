@@ -12,6 +12,7 @@ import { FontAwesome } from "@expo/vector-icons";
 import { useState } from "react";
 import TrendingCarousel, { fruitItems } from "@/components/TrendingCarousel";
 import MovieList from "@/components/MovieList";
+import { StatusBar } from "expo-status-bar";
 
 const { width } = Dimensions.get("window");
 const ios = Platform.OS == "ios";
@@ -19,7 +20,8 @@ const ios = Platform.OS == "ios";
 const index = () => {
   const [searchInput, setSearchInput] = useState("");
   return (
-    <ScrollView style={ios ? {} : {paddingTop : 30}}>
+    <ScrollView style={ios ? {paddingTop : 55} : {paddingTop : 30}}>
+            <StatusBar backgroundColor="#1B2431" style="light"/>
       <View className="flex flex-row items-center justify-between px-7">
         <Text className="text-white font-lexendBold text-3xl">
           Coco<Text className="text-secondary">.</Text> Mov
