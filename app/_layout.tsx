@@ -18,7 +18,7 @@ export default function RootLayout() {
   return (
     <View
       className="flex-1 bg-primary"
-      style={ios ? { marginTop: 50 } : { paddingTop: 30 }}
+      style={ios ? { marginTop: 50 } : null}
     >
       <Stack
         screenOptions={{
