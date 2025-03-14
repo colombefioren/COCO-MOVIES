@@ -7,7 +7,7 @@ const Cast = () => {
   return (
     <View className="flex gap-5">
       <Text
-        className="font-lexendSemi text-white mt-5 text-lg"
+        className="font-lexendSemi text-white mb-5 mt-7 text-lg"
         style={{ marginLeft: 28 }}
       >
         Top Cast
@@ -16,20 +16,22 @@ const Cast = () => {
         // mode="parallax"
         data={fruitItems}
         width={width * 0.95}
-        height={height * 0.16}
+        height={height * 0.19}
         renderItem={({ item }) => (
           <TouchableOpacity onPress={() => router.push(`/Cast/${item.id}`)}>
-            <View
-              style={{ width: 75 }}
-              className="flex items-center ml-5 gap-3 "
-            >
+            <View style={{ width: 150 }} className="flex items-center gap-1">
               <Image
-                style={{ width: 75, height: 75, borderRadius: 100 }}
+                style={{ width: 85, height: 85, borderRadius: 100 }}
                 source={{ uri: item.image }}
               />
-              <Text className="text-white text-center font-lexendRegular text-[13px]">
-                Scarlett Johansson
-              </Text>
+              <View className="flex items-center">
+                <Text className="text-white text-center font-lexendRegular text-[13px]">
+                  Scarlett Johansson
+                </Text>
+                <Text className="font-lexend text-slate-400 text-[12px] text-center">
+                  Black Window
+                </Text>
+              </View>
             </View>
           </TouchableOpacity>
         )}
