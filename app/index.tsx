@@ -1,11 +1,9 @@
 import {
   View,
   Text,
-  TextInput,
   Dimensions,
   TouchableOpacity,
   ScrollView,
-  SafeAreaView,
   Platform,
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
@@ -31,7 +29,7 @@ const index = () => {
           Coco<Text className="text-secondary">.</Text> Mov
           <Text className="text-secondary">i</Text>es
         </Text>
-        <TouchableOpacity onPress={()=>router.push("/Search")}>
+        <TouchableOpacity onPress={() => router.push("/Search")}>
           <FontAwesome name="search" size={27} color={"#475569"} />
         </TouchableOpacity>
       </View>
