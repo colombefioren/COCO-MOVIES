@@ -24,11 +24,11 @@ const MovieAll = ({ data, search }: { data: Items[]; search: boolean }) => {
       {search && data.length === 0 && (
         <Image
           style={{
-            width: width * 0.83,
+            width: width * 0.85,
             height: height * 0.3,
             objectFit: "cover",
             marginInline: "auto",
-            marginTop: 60,
+            marginTop: 40,
           }}
           source={require("../assets/images/searchImage.png")}
         />

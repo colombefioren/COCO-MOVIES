@@ -17,7 +17,7 @@ const Search = () => {
   const [searchInput, setSearchInput] = useState("");
 
   return (
-    <ScrollView style={ios ? {} : { paddingTop: 50 }}>
+    <ScrollView style={ios ? {} : { paddingTop: 40 }}>
       <View>
         <StatusBar backgroundColor="#1B2431" style="light" />
         <View style={{ width: width * 0.7 }} className="flex items-center">
