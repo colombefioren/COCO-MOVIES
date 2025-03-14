@@ -21,41 +21,19 @@ const ios = Platform.OS == "ios";
 const index = () => {
   const [searchInput, setSearchInput] = useState("");
   return (
-    <ScrollView style={ios ? {} : { paddingTop: 30 }}>
+    <ScrollView style={ios ? { paddingTop: 10 } : { paddingTop: 40 }}>
       <StatusBar backgroundColor="#1B2431" style="light" />
-      <View className="flex flex-row items-center justify-between px-7">
+      <View className="flex flex-row items-center justify-between px-7 mb-10">
+        <TouchableOpacity>
+          <FontAwesome name="bars" size={30} color={"#475569"} />
+        </TouchableOpacity>
         <Text className="text-white font-lexendBold text-3xl">
           Coco<Text className="text-secondary">.</Text> Mov
           <Text className="text-secondary">i</Text>es
         </Text>
-        <TouchableOpacity>
-          <FontAwesome name="bars" size={30} color={"#475569"} />
+        <TouchableOpacity onPress={()=>router.push("/Search")}>
+          <FontAwesome name="search" size={27} color={"#475569"} />
         </TouchableOpacity>
-      </View>
-      <View className="flex flex-row mb-10 mt-5 justify-center items-center">
-        <TextInput
-          onChangeText={(text) => setSearchInput(text)}
-          value={searchInput}
-          style={{ width: width * 0.7 }}
-          className="bg-primaryLight py-4 px-8 font-lexendRegular text-white rounded-full"
-          placeholder="Enter a movie name"
-          placeholderTextColor={"#475569"}
-        />
-        {searchInput.length > 0 ? (
-          <TouchableOpacity
-            onPress={() => setSearchInput("")}
-            className="absolute right-[80px]"
-          >
-            <FontAwesome name="times-circle" size={27} color={"#475569"} />
-          </TouchableOpacity>
-        ) : (
-          <TouchableOpacity
-            onPress={() => router.push("/Search")}
-            className="absolute right-[80px]"
-          >
-            <FontAwesome name="search" size={27} color={"#475569"} />
-          </TouchableOpacity>
-        )}
       </View>
       <TrendingCarousel />
       <MovieList title="UPCOMING" data={fruitItems} />
