@@ -3,9 +3,9 @@ import "../global.css";
 import { useFonts } from "expo-font";
 import { Platform, SafeAreaView, Text, View } from "react-native";
 import { StatusBar } from "expo-status-bar";
+export const ios = Platform.OS === "ios";
 
 export default function RootLayout() {
-  const ios = Platform.OS === "ios";
   const [fontsLoaded] = useFonts({
     lexend: require("../assets/fonts/Lexend-ExtraLight.ttf"),
     lexendRegular: require("../assets/fonts/Lexend-Light.ttf"),
@@ -16,10 +16,7 @@ export default function RootLayout() {
   // style={ios ? {} : {paddingTop : 30}}
   if (!fontsLoaded) return <Text>Loading fonts...</Text>;
   return (
-    <View
-      className="flex-1 bg-primary"
-      style={ios ? { marginTop: 50 } : null}
-    >
+    <View className="flex-1 bg-primary" style={ios ? { marginTop: 50 } : null}>
       <Stack
         screenOptions={{
           headerShown: false,
@@ -28,7 +25,8 @@ export default function RootLayout() {
       >
         <Stack.Screen name="index" options={{ title: "Home" }} />
         <Stack.Screen name="Movie/[id]" />
-        <Stack.Screen name="Cast/[id]"/>
+        <Stack.Screen name="Cast/[id]" />
+        <Stack.Screen name="Search" />
       </Stack>
     </View>
   );

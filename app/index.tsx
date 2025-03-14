@@ -13,8 +13,9 @@ import { useState } from "react";
 import TrendingCarousel, { fruitItems } from "@/components/TrendingCarousel";
 import MovieList from "@/components/MovieList";
 import { StatusBar } from "expo-status-bar";
+import { router } from "expo-router";
 
-const { width } = Dimensions.get("window");
+export const { width } = Dimensions.get("window");
 const ios = Platform.OS == "ios";
 
 const index = () => {
@@ -48,7 +49,10 @@ const index = () => {
             <FontAwesome name="times-circle" size={27} color={"#475569"} />
           </TouchableOpacity>
         ) : (
-          <TouchableOpacity className="absolute right-[80px]">
+          <TouchableOpacity
+            onPress={() => router.push("/Search")}
+            className="absolute right-[80px]"
+          >
             <FontAwesome name="search" size={27} color={"#475569"} />
           </TouchableOpacity>
         )}

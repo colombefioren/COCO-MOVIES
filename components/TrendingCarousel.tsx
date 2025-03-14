@@ -37,6 +37,18 @@ export const fruitItems: Items[] = [
       "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/movie-poster-template-design-21a1c803fe4ff4b858de24f5c91ec57f_screen.jpg?ts=1636996180",
     title: "After",
   },
+  {
+    id: 5,
+    image:
+      "https://www.shutterstock.com/editorial/image-editorial/MaT1Ady5O3T0M1ycOTgyNTE=/avengers-endgame-2019-poster-art-440nw-10213611aw.jpg",
+    title: "Avengers : Endgame",
+  },
+  {
+    id: 6,
+    image:
+      "https://www.shutterstock.com/editorial/image-editorial/MaT1Ady5O3T0M1ycOTgyNTE=/avengers-endgame-2019-poster-art-440nw-10213611aw.jpg",
+    title: "Avengers : Endgame",
+  },
 ];
 export type Items = {
   id: number;
