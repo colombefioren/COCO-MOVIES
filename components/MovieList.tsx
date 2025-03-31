@@ -28,14 +28,17 @@ const MovieList = ({ title, data }: { title: string; data: Items[] }) => {
         </TouchableOpacity>
       </View>
       <View className="ml-3">
-       
         <FlatList
+          showsHorizontalScrollIndicator={false}
           nestedScrollEnabled={true}
           horizontal
           data={data}
           keyExtractor={(item) => item.id.toString()}
           renderItem={({ item }) => (
-            <Pressable className="mr-3" onPress={() => router.replace(`/Movie/${item.id}`)}>
+            <Pressable
+              className="mr-3"
+              onPress={() => router.replace(`/Movie/${item.id}`)}
+            >
               <MovieCard
                 trending={false}
                 item={item}
