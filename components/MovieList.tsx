@@ -6,6 +6,7 @@ import {
   Platform,
   TouchableWithoutFeedback,
   Pressable,
+  FlatList,
 } from "react-native";
 import { Items } from "./TrendingCarousel";
 import Carousel from "react-native-reanimated-carousel";
@@ -18,22 +19,23 @@ const MovieList = ({ title, data }: { title: string; data: Items[] }) => {
   const router = useRouter();
 
   return (
-    <View>
-      <View className="flex flex-row px-7 justify-between items-center my-5">
+    <View className="mt-5">
+      <View className="flex flex-row px-7 justify-between items-center mt-5 mb-6">
         <Text className=" font-lexendSemi text-white text-lg ">{title}</Text>
 
         <TouchableOpacity className="border border-secondary rounded-lg px-5 py-3">
           <Text className="text-secondary font-lexendRegular">See all</Text>
         </TouchableOpacity>
       </View>
-      <View>
-        <Carousel
-          width={width}
-          height={height * 0.39}
+      <View className="ml-3">
+       
+        <FlatList
+          nestedScrollEnabled={true}
+          horizontal
           data={data}
-          // mode="parallax"
+          keyExtractor={(item) => item.id.toString()}
           renderItem={({ item }) => (
-            <Pressable onPress={() => router.replace(`/Movie/${item.id}`)}>
+            <Pressable className="mr-3" onPress={() => router.replace(`/Movie/${item.id}`)}>
               <MovieCard
                 trending={false}
                 item={item}
@@ -42,12 +44,6 @@ const MovieList = ({ title, data }: { title: string; data: Items[] }) => {
               />
             </Pressable>
           )}
-          // modeConfig={{
-          //   parallaxAdjacentItemScale: 1,
-          //   parallaxScrollingOffset: parallaxScrollingOffset,
-          //   parallaxScrollingScale: 1,
-          // }}
-          // style={{backgroundColor:"pink"}}
         />
       </View>
     </View>
