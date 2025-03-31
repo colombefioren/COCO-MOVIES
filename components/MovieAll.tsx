@@ -16,7 +16,7 @@ const MovieAll = ({ data, search }: { data: Items[]; search: boolean }) => {
   return (
     <>
       {search && data.length > 0 && (
-        <Text className="text-lg ml-5 mb-4">
+        <Text className="text-lg ml-5 mb-4 mt-3">
           <Text className="font-lexendSemi text-secondary">Results</Text>
           <Text className="font-lexendRegular text-white">{` (${data.length})`}</Text>
         </Text>
