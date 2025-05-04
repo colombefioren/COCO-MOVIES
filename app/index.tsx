@@ -8,17 +8,37 @@ import {
   SafeAreaView,
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
-import { useState } from "react";
-import TrendingCarousel, { fruitItems } from "@/components/TrendingCarousel";
+import { useEffect, useState } from "react";
+import TrendingCarousel from "@/components/TrendingCarousel";
 import MovieList from "@/components/MovieList";
 import { StatusBar } from "expo-status-bar";
 import { router } from "expo-router";
+import { MovieItem } from "@/types/movieItem";
+import { fetchTopMovies, fetchUpcomingMovies } from "@/services/tmdb";
 
 export const { width } = Dimensions.get("window");
 const ios = Platform.OS == "ios";
 
 const index = () => {
+  const [upcomingMovies, setUpcomingMovies] = useState<MovieItem[]>([]);
+  const [topMovies, setTopMovies] = useState<MovieItem[]>([]);
   const [searchInput, setSearchInput] = useState("");
+
+  useEffect(() => {
+    getUpcomingMovies();
+    getTopMovies();
+  }, []);
+
+  const getUpcomingMovies = async () => {
+    const upcomingMovieData = await fetchUpcomingMovies();
+    setUpcomingMovies(upcomingMovieData);
+  };
+
+  const getTopMovies = async () => {
+    const topMovieData = await fetchTopMovies();
+    setTopMovies(topMovieData);
+  };
+
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#1B2431" }}>
       <ScrollView
@@ -39,9 +59,9 @@ const index = () => {
           </TouchableOpacity>
         </View>
         <TrendingCarousel />
-        <MovieList title="UPCOMING" data={fruitItems} />
-        <MovieList title="TOP RATED" data={fruitItems} />
-        <MovieList title="FOR YOU" data={fruitItems} />
+        <MovieList title="UPCOMING" data={upcomingMovies} />
+        <MovieList title="TOP RATED" data={topMovies} />
+        {/* <MovieList title="FOR YOU" data={fruitItems} /> */}
       </ScrollView>
     </SafeAreaView>
   );

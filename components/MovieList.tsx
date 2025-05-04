@@ -8,16 +8,15 @@ import {
   Pressable,
   FlatList,
 } from "react-native";
-import { Items } from "./TrendingCarousel";
 import Carousel from "react-native-reanimated-carousel";
 import MovieCard from "./MovieCard";
 import { useRouter } from "expo-router";
-const MovieList = ({ title, data }: { title: string; data: Items[] }) => {
+import { MovieItem } from "@/types/movieItem";
+const MovieList = ({ title, data }: { title: string; data: MovieItem[] }) => {
   const { width, height } = Dimensions.get("window");
   const ios = Platform.OS === "ios";
   const parallaxScrollingOffset = ios ? 200 : 185;
   const router = useRouter();
-
   return (
     <View className="mt-5">
       <View className="flex flex-row px-7 justify-between items-center mt-5 mb-6">
