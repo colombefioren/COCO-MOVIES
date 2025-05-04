@@ -7,11 +7,7 @@ COCO MOVIES is a **React Native** application that allows users to browse and di
 ✅ **Search Functionality** 
 ✅ **Movie Details**
 ✅ **Responsive UI** 
-✅ **Smooth Navigation**
-
-
-## 📸 Screenshots  
-_Add screenshots or a demo GIF here to showcase the app._  
+✅ **Smooth Navigation** 
 
 ## 🔧 Setup & Installation  
 1️⃣ Clone the repository:  
