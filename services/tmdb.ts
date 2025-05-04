@@ -44,7 +44,7 @@ export const fetchMovieByID = async (id: number) => {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     const data = await response.json();
-    return data.results || [];
+    return data;
   } catch (error) {
     console.error("API call failed:", error);
     return [];

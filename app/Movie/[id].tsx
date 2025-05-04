@@ -25,41 +25,46 @@ const MovieScreen = () => {
   const { height } = Dimensions.get("window");
   const router = useRouter();
   const [desc, setDesc] = useState("");
+  const [descToShow, setDescToShow] = useState("");
   const ios = Platform.OS == "ios";
   const iconSize = ios ? 52 : 45;
-  const { heure, minute } = transformTime("201");
   const [show, setShow] = useState(false);
   const [item, setItem] = useState<MovieItem>();
+  const [duration, setDuration] = useState({ heure: 0, minute: 0 });
 
   const getCurrentItem = async (id: number) => {
     const currentMovieData = await fetchMovieByID(id);
     setItem(currentMovieData);
-    setDesc(currentMovieData?.overview);
+    const overview = currentMovieData?.overview || "";
+    setDesc(overview);
+    descLength(overview);
+    const { heure, minute } = transformTime(`${currentMovieData?.runtime}`);
+    setDuration({ heure, minute });
   };
 
   const descLength = (str: string) => {
     if (str.length > 150) {
       setLong(true);
       setShow(false);
-      setDesc(str.slice(0, 150) + "...");
+      setDescToShow(str.slice(0, 150) + "...");
     } else {
       setLong(false);
-      setDesc(str);
+      setDescToShow(desc);
     }
   };
 
   useEffect(() => {
     getCurrentItem(+id);
-  }, []);
+  }, [id]);
 
   const handleMoreClick = () => {
-    setDesc(desc);
+    setDescToShow(desc);
     setLong(false);
     setShow(true);
   };
 
   const handleShowClick = () => {
-    setDesc(desc.slice(0, 150) + "...");
+    setDescToShow(desc.slice(0, 150) + "...");
     setLong(true);
     setShow(false);
   };
@@ -173,7 +178,7 @@ const MovieScreen = () => {
             </View>
             <Text className="text-white">|</Text>
             <Text className="font-lexendSemi text-white text-sm">
-              {heure}h{minute}min
+              {duration.heure}h{duration.minute}min
             </Text>
             <Text className="text-white">|</Text>
             <Text className="font-lexendSemi text-white text-sm">
@@ -182,7 +187,7 @@ const MovieScreen = () => {
           </View>
           <View className="mt-5 mx-5">
             <Text className="font-lexendRegular text-justify text-white relative text-[13px] leading-6">
-              {desc}
+              {descToShow}
             </Text>
             {long && (
               <TouchableOpacity className="mt-1" onPress={handleMoreClick}>
