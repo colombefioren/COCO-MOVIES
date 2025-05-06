@@ -18,8 +18,10 @@ import Cast from "@/components/Cast";
 import MovieList from "@/components/MovieList";
 import { fetchMovieByID, image500 } from "@/services/tmdb";
 import { MovieItem } from "@/types/movieItem";
+import { useGenreStore } from "@/store/genre";
 
 const MovieScreen = () => {
+  const [genres, setGenres] = useState<string[]>([]);
   const [long, setLong] = useState(false);
   const { id } = useLocalSearchParams();
   const { height } = Dimensions.get("window");
@@ -31,6 +33,8 @@ const MovieScreen = () => {
   const [show, setShow] = useState(false);
   const [item, setItem] = useState<MovieItem>();
   const [duration, setDuration] = useState({ heure: 0, minute: 0 });
+
+  const fetchGenre = useGenreStore((state) => state.fetchGenre);
 
   const getCurrentItem = async (id: number) => {
     const currentMovieData = await fetchMovieByID(id);
@@ -53,8 +57,19 @@ const MovieScreen = () => {
     }
   };
 
+  const takeGenres = async (item: MovieItem | undefined) => {
+    if (item) {
+      for (let i = 0; i < item.genre_ids.length; i++) {
+        const genreName = await fetchGenre(item.genre_ids[i]);
+        setGenres((prev) => [...prev, genreName]);
+      }
+    }
+  };
+
   useEffect(() => {
     getCurrentItem(+id);
+    takeGenres(item);
+    console.log(genres)
   }, [id]);
 
   const handleMoreClick = () => {
@@ -173,7 +188,7 @@ const MovieScreen = () => {
             <View className="flex flex-row gap-3 items-center">
               <FontAwesome name="star" color={"#EF9730"} size={17} />
               <Text className="font-lexendRegular text-tertiary text-sm">
-                9.8
+                {item.vote_average.toFixed(1)}
               </Text>
             </View>
             <Text className="text-white">|</Text>
@@ -182,7 +197,7 @@ const MovieScreen = () => {
             </Text>
             <Text className="text-white">|</Text>
             <Text className="font-lexendSemi text-white text-sm">
-              Action, Science Fiction
+              {genres.join(",")}
             </Text>
           </View>
           <View className="mt-5 mx-5">

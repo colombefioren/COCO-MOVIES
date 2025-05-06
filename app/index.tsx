@@ -29,6 +29,8 @@ const index = () => {
     getTopMovies();
   }, []);
 
+  console.log(topMovies[0])
+
   const getUpcomingMovies = async () => {
     const upcomingMovieData = await fetchUpcomingMovies();
     setUpcomingMovies(upcomingMovieData);
